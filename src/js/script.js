@@ -1,5 +1,37 @@
 "use strict";
 
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
+};
+
+let advertising = document.querySelectorAll('.promo__adv img'),
+    bg = document.querySelector('.promo__bg'),
+    genre = bg.querySelector('.promo__genre'),
+    moveList = document.querySelector('.promo__interactive-list');
+
+genre.textContent = "Драма";
+bg.style.backgroundImage = 'url("img/bg.jpg")';
+
+advertising.forEach(item => {
+    item.remove();
+});
+
+moveList.innerHTML = '';
+movieDB.movies.sort();
+    movieDB.movies.forEach((x, y) => {
+        moveList.innerHTML += `
+            <li class="promo__interactive-item">${y + 1}.  ${x}
+                <div class="delete"></div>
+            </li>
+        `;
+    });
+
 // Represent
 
 const personalMovieDB = {
@@ -61,4 +93,8 @@ const personalMovieDB = {
         }
     },
 };
+
+
+
+
 
